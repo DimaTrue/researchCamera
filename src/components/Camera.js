@@ -18,7 +18,7 @@ export default class Camera extends React.Component {
   takePicture = async function() {
     if (this.camera) {
       // Pause the camera's preview
-      this.camera.pausePreview();
+      // this.camera.pausePreview();
 
       // Set the activity indicator
       this.setState((previousState, props) => ({
@@ -32,6 +32,7 @@ export default class Camera extends React.Component {
 
       // Get the base64 version of the image
       const data = await this.camera.takePictureAsync(options);
+      this.camera.pausePreview();
 
       // Get the identified image
       this.identifyImage(data.base64);
@@ -62,9 +63,10 @@ export default class Camera extends React.Component {
       identifedAs: identifiedImage,
       loading: false,
     }));
+// console.warn(this.state.identifedAs)
 
     // Show an alert with the answer on
-    Alert.alert(this.state.identifedAs, '', { cancelable: false });
+    Alert.alert(this.state.identifedAs);
 
     // Resume the preview
     this.camera.resumePreview();
