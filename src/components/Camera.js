@@ -63,7 +63,7 @@ export default class Camera extends React.Component {
       identifedAs: identifiedImage,
       loading: false,
     }));
-// console.warn(this.state.identifedAs)
+    // console.warn(this.state.identifedAs)
 
     // Show an alert with the answer on
     Alert.alert(this.state.identifedAs);

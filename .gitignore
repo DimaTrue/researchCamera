@@ -63,3 +63,4 @@ buck-out/
 #Other
 test.txt
 /keys/
+/app/release/
