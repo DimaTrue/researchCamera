@@ -12,15 +12,15 @@ export const TabNav = createBottomTabNavigator(
     Main: {
       screen: MainScreen,
       navigationOptions: () => ({
-        tabBarLabel: 'Main',
-      }),
+        tabBarLabel: 'Main'
+      })
     },
     Settings: {
       screen: Camera,
       navigationOptions: () => ({
-        tabBarLabel: 'Recognition',
-      }),
-    },
+        tabBarLabel: 'Recognition'
+      })
+    }
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -37,14 +37,14 @@ export const TabNav = createBottomTabNavigator(
         }
 
         return <IconComponent name={iconName} size={25} color={tintColor} />;
-      },
+      }
     }),
     tabBarOptions: {
       showLabel: false,
       activeTintColor: '#0094e3',
-      inactiveTintColor: '#ced3db',
-    },
-  },
+      inactiveTintColor: '#ced3db'
+    }
+  }
 );
 
 export default createAppContainer(TabNav);

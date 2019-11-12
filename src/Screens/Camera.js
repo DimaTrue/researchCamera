@@ -11,7 +11,7 @@ export default class Camera extends React.Component {
 
     this.state = {
       identifedAs: '',
-      loading: false,
+      loading: false
     };
   }
 
@@ -22,12 +22,12 @@ export default class Camera extends React.Component {
 
       // Set the activity indicator
       this.setState((previousState, props) => ({
-        loading: true,
+        loading: true
       }));
 
       // Set options
       const options = {
-        base64: true,
+        base64: true
       };
 
       // Get the base64 version of the image
@@ -41,19 +41,18 @@ export default class Camera extends React.Component {
 
   identifyImage(imageData) {
     // Initialise Clarifai api
+    // eslint-disable-next-line global-require
     const Clarifai = require('clarifai');
 
     const app = new Clarifai.App({
-      apiKey: KEY,
+      apiKey: KEY
     });
 
     // Identify the image
     app.models
       .predict(Clarifai.GENERAL_MODEL, { base64: imageData })
       .then(response =>
-        this.displayAnswer(response.outputs[0].data.concepts[0].name).catch(
-          err => Alert.alert(err),
-        ),
+        this.displayAnswer(response.outputs[0].data.concepts[0].name).catch(err => Alert.alert(err))
       );
   }
 
@@ -61,7 +60,7 @@ export default class Camera extends React.Component {
     // Dismiss the acitivty indicator
     this.setState((prevState, props) => ({
       identifedAs: identifiedImage,
-      loading: false,
+      loading: false
     }));
     // console.warn(this.state.identifedAs)
 
@@ -85,10 +84,7 @@ export default class Camera extends React.Component {
           color="#fff"
           animating={this.state.loading}
         />
-        <CaptureButton
-          buttonDisabled={this.state.loading}
-          onClick={this.takePicture.bind(this)}
-        />
+        <CaptureButton buttonDisabled={this.state.loading} onClick={this.takePicture.bind(this)} />
       </RNCamera>
     );
   }
@@ -100,11 +96,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width
   },
   loadingIndicator: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });
