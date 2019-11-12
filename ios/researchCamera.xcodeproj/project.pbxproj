@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* researchCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* researchCameraTests.m */; };
 		06BD8126237AAAAA00B24A91 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BD8125237AAAAA00B24A91 /* Counter.swift */; };
+		06BD8129237AAC9E00B24A91 /* Counter.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD8128237AAC9E00B24A91 /* Counter.m */; };
 		0A7971CA957BCBEB0E727D62 /* libPods-researchCameraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1647B85A7C4A90D950EF4EE4 /* libPods-researchCameraTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
@@ -55,6 +56,7 @@
 		06765EFB23422FCB00EEB848 /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		06BD8124237AAAA900B24A91 /* researchCamera-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "researchCamera-Bridging-Header.h"; sourceTree = "<group>"; };
 		06BD8125237AAAAA00B24A91 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		06BD8128237AAC9E00B24A91 /* Counter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Counter.m; sourceTree = "<group>"; };
 		1108876428125120F3CBFF2B /* libPods-researchCamera-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-researchCamera-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* researchCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = researchCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = researchCamera/AppDelegate.h; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				06BD8125237AAAAA00B24A91 /* Counter.swift */,
+				06BD8128237AAC9E00B24A91 /* Counter.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -618,6 +621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06BD8129237AAC9E00B24A91 /* Counter.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				06BD8126237AAAAA00B24A91 /* Counter.swift in Sources */,
