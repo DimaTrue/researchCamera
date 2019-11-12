@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* researchCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* researchCameraTests.m */; };
+		066461BC237AE4E000047079 /* CounterViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066461BB237AE4E000047079 /* CounterViewManager.swift */; };
+		066461BE237AE5A600047079 /* CounterViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 066461BD237AE5A600047079 /* CounterViewManager.m */; };
+		066461C0237AE85100047079 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066461BF237AE85100047079 /* CounterView.swift */; };
 		06BD8126237AAAAA00B24A91 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BD8125237AAAAA00B24A91 /* Counter.swift */; };
 		06BD8129237AAC9E00B24A91 /* Counter.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD8128237AAC9E00B24A91 /* Counter.m */; };
 		0A7971CA957BCBEB0E727D62 /* libPods-researchCameraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1647B85A7C4A90D950EF4EE4 /* libPods-researchCameraTests.a */; };
@@ -53,6 +56,9 @@
 		00E356EE1AD99517003FC87E /* researchCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = researchCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* researchCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = researchCameraTests.m; sourceTree = "<group>"; };
+		066461BB237AE4E000047079 /* CounterViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewManager.swift; sourceTree = "<group>"; };
+		066461BD237AE5A600047079 /* CounterViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CounterViewManager.m; sourceTree = "<group>"; };
+		066461BF237AE85100047079 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		06765EFB23422FCB00EEB848 /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		06BD8124237AAAA900B24A91 /* researchCamera-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "researchCamera-Bridging-Header.h"; sourceTree = "<group>"; };
 		06BD8125237AAAAA00B24A91 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -146,6 +152,9 @@
 		13B07FAE1A68108700A75B9A /* researchCamera */ = {
 			isa = PBXGroup;
 			children = (
+				066461BB237AE4E000047079 /* CounterViewManager.swift */,
+				066461BF237AE85100047079 /* CounterView.swift */,
+				066461BD237AE5A600047079 /* CounterViewManager.m */,
 				06BD8125237AAAAA00B24A91 /* Counter.swift */,
 				06BD8128237AAC9E00B24A91 /* Counter.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -624,7 +633,10 @@
 				06BD8129237AAC9E00B24A91 /* Counter.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				066461C0237AE85100047079 /* CounterView.swift in Sources */,
 				06BD8126237AAAAA00B24A91 /* Counter.swift in Sources */,
+				066461BC237AE4E000047079 /* CounterViewManager.swift in Sources */,
+				066461BE237AE5A600047079 /* CounterViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
