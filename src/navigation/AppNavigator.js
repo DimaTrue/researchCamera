@@ -7,6 +7,7 @@ import Icons from 'react-native-vector-icons/FontAwesome';
 import MainScreen from '../screens/MainScreen';
 import Camera from '../screens/Camera';
 import DidSnapshotScreen from '../screens/DidSnapshotScreen';
+import * as colors from '../constants/colors';
 
 export const StackNav = createStackNavigator({
   Camera: {
@@ -53,8 +54,8 @@ export const TabNav = createBottomTabNavigator(
     }),
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: '#0094e3',
-      inactiveTintColor: '#ced3db',
+      activeTintColor: colors.ACTIVE_TINT_COLOR,
+      inactiveTintColor: colors.INACTIVE_TINT_COLOR,
     },
   },
 );
