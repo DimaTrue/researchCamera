@@ -19,12 +19,12 @@ export default CaptureButton;
 
 CaptureButton.defaultProps = {
   buttonDisabled: false,
-  onClick: () => {}
+  onClick: () => {},
 };
 
 CaptureButton.propTypes = {
   buttonDisabled: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     width: 160,
     borderRadius: 10,
-    backgroundColor: 'white'
-  }
+    backgroundColor: 'white',
+  },
 });
