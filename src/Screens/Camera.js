@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Dimensions,
-  Alert,
-  StyleSheet,
-  ActivityIndicator,
-  Image,
-} from 'react-native';
+import { Dimensions, Alert, StyleSheet, ActivityIndicator } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Clarifai from 'clarifai';
 
@@ -61,6 +55,7 @@ export default class Camera extends React.Component {
       identifedAs: identifiedImage,
       loading: false,
     }));
+
     this.props.navigation.navigate('DidSnapshotScreen', {
       identifiedImage,
     });
@@ -70,18 +65,12 @@ export default class Camera extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <>
-          <ActivityIndicator
-            size="large"
-            style={styles.loadingIndicator}
-            color="black"
-            animating={this.state.loading}
-          />
-          <Image
-            style={{ height: height / 2.5, width: width }}
-            source={this.state.pic}
-          />
-        </>
+        <ActivityIndicator
+          size="large"
+          style={styles.loadingIndicator}
+          color="black"
+          animating={this.state.loading}
+        />
       );
     }
 

@@ -1,39 +1,88 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import BlurOverlay, {
+  closeOverlay,
+  openOverlay,
+} from 'react-native-blur-overlay';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { GENERAL } from '../constants/recognition-types';
+import * as colors from '../constants/colors';
 
-class MainScreen extends Component {
-  state = {
-    recognitionType: GENERAL,
-  };
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  render() {
+  renderBlurChilds() {
     return (
-      <View style={styles.container}>
-        <Text>Recognize</Text>
+      <View style={styles.image}>
+        <Text style={styles.blurContent}>Recognition</Text>
+
         <Icon size={25} color="red" name="rocket" />
       </View>
     );
   }
-}
 
-export default MainScreen;
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome!</Text>
+        <Text style={styles.content}>Try Something</Text>
+
+        <BlurOverlay
+          radius={10}
+          downsampling={22}
+          brightness={-100}
+          onPress={() => {
+            closeOverlay();
+          }}
+          customStyles={styles.blur}
+          blurStyle="extraLight"
+          children={this.renderBlurChilds()}
+        />
+        <TouchableOpacity
+          onPress={() => {
+            openOverlay();
+          }}
+          style={styles.button}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.BACKGROUND_COLOR,
+  },
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  content: {
+    textAlign: 'center',
+    color: colors.TEXT,
+    marginBottom: 5,
+  },
+  blurContent: {
+    textAlign: 'center',
+    fontSize: 25,
+    color: colors.WHITE,
+    marginBottom: 5,
   },
   button: {
-    width: 200,
-    backgroundColor: 'grey',
-    margin: 20,
-    padding: 20,
+    width: 90,
+    height: 36,
+    backgroundColor: colors.BUTTON,
+    borderRadius: 4,
+    margin: 16,
   },
-  activeButton: {
-    backgroundColor: 'blue',
+  blur: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
