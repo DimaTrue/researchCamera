@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-import RecognizedDataItem from '../components/RecognizedDataItem';
+import RecognizedDataItem from './RecognizedDataItem';
+import CaptureButton from './CaptureButton';
 
-const DidSnapshotScreen = ({ navigation }) => {
-  const recognizedData = navigation.getParam('identifiedImage');
-
+const DidSnapshotComponent = ({ recognizedData, reset }) => {
   const keyExtractor = ({ id }) => id;
   const renderItem = ({ item }) => (
     <RecognizedDataItem name={item.name} value={item.value} />
@@ -15,6 +14,7 @@ const DidSnapshotScreen = ({ navigation }) => {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Recognized Data</Text>
+        <CaptureButton title="Reset" onClick={reset} />
         <FlatList
           data={recognizedData}
           keyExtractor={keyExtractor}
@@ -31,7 +31,7 @@ const DidSnapshotScreen = ({ navigation }) => {
   );
 };
 
-export default DidSnapshotScreen;
+export default DidSnapshotComponent;
 
 const styles = StyleSheet.create({
   container: {

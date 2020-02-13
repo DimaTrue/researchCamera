@@ -6,7 +6,6 @@ import Icons from 'react-native-vector-icons/FontAwesome';
 
 import MainScreen from '../screens/MainScreen';
 import Camera from '../screens/Camera';
-import DidSnapshotScreen from '../screens/DidSnapshotScreen';
 import * as colors from '../constants/colors';
 
 export const StackNav = createStackNavigator({
@@ -15,9 +14,6 @@ export const StackNav = createStackNavigator({
     navigationOptions: {
       header: null,
     },
-  },
-  DidSnapshotScreen: {
-    screen: DidSnapshotScreen,
   },
 });
 

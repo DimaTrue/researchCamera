@@ -1,42 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dimensions, Alert, StyleSheet, ActivityIndicator } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Clarifai from 'clarifai';
 
 import CaptureButton from '../components/CaptureButton';
+import DidSnapshotComponent from '../components/DidSnapshotComponent';
 import { KEY } from '../../keys/keys';
 
 const { width, height } = Dimensions.get('screen');
 
-export default class Camera extends React.Component {
-  constructor(props) {
-    super(props);
+const Camera = () => {
+  const [responses, setResponses] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [camera, setCamera] = useState(null);
 
-    this.state = {
-      identifedAs: '',
-      loading: false,
-      pic: null,
-    };
-  }
-
-  takePicture = async function() {
-    if (this.camera) {
+  const takePicture = async function() {
+    if (camera) {
       const options = {
         base64: true,
       };
 
-      const data = await this.camera.takePictureAsync(options);
-      this.camera.pausePreview();
-      this.setState({ pic: data });
-      this.setState((previousState, props) => ({
-        loading: true,
-      }));
-
-      this.identifyImage(data.base64);
+      const data = await camera.takePictureAsync(options);
+      camera.pausePreview();
+      setLoading(true);
+      identifyImage(data.base64);
     }
   };
 
-  identifyImage(imageData) {
+  const identifyImage = imageData => {
     const app = new Clarifai.App({
       apiKey: KEY,
     });
@@ -44,50 +35,54 @@ export default class Camera extends React.Component {
     app.models
       .predict(Clarifai.GENERAL_MODEL, { base64: imageData })
       .then(response =>
-        this.displayAnswer(response.outputs[0].data.concepts).catch(err =>
+        displayAnswer(response.outputs[0].data.concepts).catch(err =>
           Alert.alert(err),
         ),
       );
-  }
+  };
 
-  displayAnswer(identifiedImage) {
-    this.setState((prevState, props) => ({
-      identifedAs: identifiedImage,
-      loading: false,
-    }));
+  const displayAnswer = identifiedImage => {
+    setLoading(false);
+    setResponses(identifiedImage);
+    setCamera(null);
+  };
 
-    this.props.navigation.navigate('DidSnapshotScreen', {
-      identifiedImage,
-    });
-    this.camera.resumePrewiev();
-  }
-
-  render() {
-    if (this.state.loading) {
-      return (
-        <ActivityIndicator
-          size="large"
-          style={styles.loadingIndicator}
-          color="black"
-          animating={this.state.loading}
-        />
-      );
-    }
-
+  if (loading) {
     return (
-      <RNCamera
-        ref={ref => {
-          this.camera = ref;
-        }}
-        style={styles.preview}>
-        <CaptureButton
-          buttonDisabled={this.state.loading}
-          onClick={this.takePicture.bind(this)}
-        />
-      </RNCamera>
+      <ActivityIndicator
+        size="large"
+        style={styles.loadingIndicator}
+        color="black"
+        animating={loading}
+      />
     );
   }
-}
+
+  if (responses.length) {
+    return (
+      <DidSnapshotComponent
+        recognizedData={responses}
+        reset={() => setResponses([])}
+      />
+    );
+  }
+
+  return (
+    <RNCamera
+      ref={ref => {
+        setCamera(ref);
+      }}
+      style={styles.preview}>
+      <CaptureButton
+        buttonDisabled={loading}
+        onClick={takePicture}
+        title="Capture"
+      />
+    </RNCamera>
+  );
+};
+
+export default Camera;
 
 const styles = StyleSheet.create({
   preview: {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import BlurOverlay, {
   closeOverlay,
@@ -8,48 +8,43 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import * as colors from '../constants/colors';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  renderBlurChilds() {
+const App = () => {
+  const renderBlurChilds = () => {
     return (
       <View style={styles.image}>
         <Text style={styles.blurContent}>Recognition</Text>
-
         <Icon size={25} color="red" name="rocket" />
       </View>
     );
-  }
+  };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome!</Text>
-        <Text style={styles.content}>Try Something</Text>
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome!</Text>
+      <Text style={styles.content}>Try Something</Text>
 
-        <BlurOverlay
-          radius={10}
-          downsampling={22}
-          brightness={-100}
-          onPress={() => {
-            closeOverlay();
-          }}
-          customStyles={styles.blur}
-          blurStyle="extraLight"
-          children={this.renderBlurChilds()}
-        />
-        <TouchableOpacity
-          onPress={() => {
-            openOverlay();
-          }}
-          style={styles.button}
-        />
-      </View>
-    );
-  }
-}
+      <BlurOverlay
+        radius={10}
+        downsampling={22}
+        brightness={-100}
+        onPress={() => {
+          closeOverlay();
+        }}
+        customStyles={styles.blur}
+        blurStyle="extraLight"
+        children={renderBlurChilds()}
+      />
+      <TouchableOpacity
+        onPress={() => {
+          openOverlay();
+        }}
+        style={styles.button}
+      />
+    </View>
+  );
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
