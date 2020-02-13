@@ -1,10 +1,18 @@
 import React from 'react';
-import { Dimensions, Alert, StyleSheet, ActivityIndicator } from 'react-native';
+import {
+  Dimensions,
+  Alert,
+  StyleSheet,
+  ActivityIndicator,
+  Image,
+} from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Clarifai from 'clarifai';
 
 import CaptureButton from '../components/CaptureButton';
 import { KEY } from '../../keys/keys';
+
+const { width, height } = Dimensions.get('screen');
 
 export default class Camera extends React.Component {
   constructor(props) {
@@ -13,6 +21,7 @@ export default class Camera extends React.Component {
     this.state = {
       identifedAs: '',
       loading: false,
+      pic: null,
     };
   }
 
@@ -23,7 +32,8 @@ export default class Camera extends React.Component {
       };
 
       const data = await this.camera.takePictureAsync(options);
-
+      this.camera.pausePreview();
+      this.setState({ pic: data });
       this.setState((previousState, props) => ({
         loading: true,
       }));
@@ -54,17 +64,24 @@ export default class Camera extends React.Component {
     this.props.navigation.navigate('DidSnapshotScreen', {
       identifiedImage,
     });
+    this.camera.resumePrewiev();
   }
 
   render() {
     if (this.state.loading) {
       return (
-        <ActivityIndicator
-          size="large"
-          style={styles.loadingIndicator}
-          color="black"
-          animating={this.state.loading}
-        />
+        <>
+          <ActivityIndicator
+            size="large"
+            style={styles.loadingIndicator}
+            color="black"
+            animating={this.state.loading}
+          />
+          <Image
+            style={{ height: height / 2.5, width: width }}
+            source={this.state.pic}
+          />
+        </>
       );
     }
 
@@ -88,8 +105,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
+    height: height,
+    width: width,
   },
   loadingIndicator: {
     flex: 1,
